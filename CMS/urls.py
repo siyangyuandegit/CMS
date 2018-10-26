@@ -18,5 +18,12 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('school.urls')),
+    url(r'^', include('index.urls')),#0登录
+    url(r'^archive/',include('archive.urls')),  # 1档案管理
+    url(r'^score/',include('score.urls')),  # 2成绩管理
+    url(r'^teacher/',include('teacher.urls') ),  # 3教职工管理
+    url(r'^library/', include('library.urls')),  # 4图书馆管理
+    url(r'^codeManage/',include('codeManage.urls') ),  # 5代码维护
+    url(r'^user/',include('user.urls') ),  # 6用户管理
+    url(r'^system/',include('system0.urls')),  # 7系统信息
 ]
