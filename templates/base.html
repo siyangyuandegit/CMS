@@ -1,0 +1,235 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>校园管理系统</title>
+    <link href={% static 'bootstrap/bootstrap.css' %} media='all' rel='stylesheet' type='text/css'/>
+    <link href={% static 'bootstrap/bootstrap-responsive.css' %} media='all' rel='stylesheet' type='text/css'/>
+    <link href={% static 'light-theme.css' %} id='color-settings-body-color' media='all' rel='stylesheet'
+          type='text/css'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body class='contrast-red '>
+<header>
+    <div class='navbar'>
+        <div class='navbar-inner'>
+            <div class='container-fluid'>
+                <a class='brand' href='base.html'>
+                    <span class='hidden-phone'>校园管理系统</span>
+                </a>
+                <ul class='nav pull-right'>
+                    <li class=''>
+                        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                            <span>欢迎jsjsjs登陆</span>
+                            <b class='caret'></b>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<nav class='' id='main-nav'>
+    <div class='navigation'>
+        <div class='search'>
+            <form accept-charset="UTF-8" action="search_results.html" method="get"/>
+            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
+            <div class='search-wrapper'>
+                <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text"
+                       value=""/>
+                <button class="btn btn-link icon-search" name="button" type="submit"></button>
+            </div>
+            </form>
+        </div>
+        <ul class='nav nav-stacked'>
+            <li class='active'>
+                <a style="background-color: #EFEFEF" href='base.html'>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li class=''>
+                <a class='dropdown-collapse' href='#'>
+                    <span>档案管理</span>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='form_styles.html'>
+                            <span>学生基本信息</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='form_components.html'>
+                            <span>学生入校登记</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='validations.html'>
+                            <span>学生信息维护</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='wizard.html'>
+                            <span>学生登记查询</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='wizard.html'>
+                            <span>教师基本信息</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='wizard.html'>
+                            <span>教师信息维护</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class='dropdown-collapse ' href='#'>
+                    <span>成绩管理</span>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='ui_elements.html'>
+                            <span>成绩录入</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>成绩查询</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>班级成绩统计</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>年纪成绩统计</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class='dropdown-collapse ' href='#'>
+                    <span>教职工管理</span>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='ui_elements.html'>
+                            <span>教职任课</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>任班主任</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>任课教师查询</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>班主任查询</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class='dropdown-collapse ' href='#'>
+                    <span>图书馆管理</span>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='ui_elements.html'>
+                            <span>图书登记</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>图书维护</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>图书借阅</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>图书归还</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>借阅查询</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class='dropdown-collapse ' href='#'>
+                    <span>代码维护</span>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='ui_elements.html'>
+                            <span>专业代码维护</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>年级代码维护</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>班级代码维护</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>学科代码维护</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class='dropdown-collapse ' href='#'>
+                    <span>用户维护</span>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='ui_elements.html'>
+                            <span>用户添加</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='widgets.html'>
+                            <span>用户查询</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class='dropdown-collapse ' href='#'>
+                    <span>系统信息</span>
+                </a>
+            </li>
+            <li>
+                <a class='dropdown-collapse ' href='#'>
+                    <span>退出登录</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% block right %}
+{% endblock %}
+<script src={% static 'jquery/jquery.min.js' %} type='text/javascript'></script>
+<script src={% static 'nav.js' %} type='text/javascript'></script>
+</body>
+</html>
