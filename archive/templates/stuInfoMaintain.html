@@ -1,4 +1,43 @@
 {% extends 'base.html' %}
 {% block right %}
-    index
+    <table cellpadding="9" cellspacing="0" border="1" style="margin:auto 0;">
+        <form action="/archive/stuInfoMaintain/" method="post">
+            {% csrf_token %}
+            <td colspan=6 align="center">
+                查询条件：<select name="qconditon" id="">
+                <option value="sname">学生姓名</option>
+                <option value="sid">学生编号</option>
+                <option value="identityNum">身份证号</option>
+            </select>
+                &emsp;<input type="text" name="condition">
+                {#                <script>#}
+                {#                    $.get('/archive/stuInfoMaintain/search/')#}
+                {#                </script>#}
+                <input type="submit" value="查询">
+            </td>
+            </tr>
+        </form>
+        <tr align="center">
+            <td> 学生编号</td>
+            <td> 学生姓名</td>
+            <td> 身份证号</td>
+            <td> 出生日期</td>
+            <td> 家庭地址</td>
+            <td>用户选择</td>
+        </tr>
+        {% for stu in stu %}
+            {% if stu == '' %}
+                <tr align="center" style="display: none">
+            {% elif stu != '' %}
+                <tr align="center">
+            {% endif %}
+        <td> {{ stu.sid.sid }}</td>
+        <td> {{ stu.sid.sname }}</td>
+        <td> {{ stu.identitynum }}</td>
+        <td> {{ stu.birthdate }}</td>
+        <td> {{ stu.address }}</td>
+        <td><a href=""><input type="button" value="维护"></a></td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

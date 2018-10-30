@@ -1,4 +1,36 @@
 {% extends 'base.html' %}
+
 {% block right %}
-    index
+
+{% if messages %}
+    <div style=" margin-left: 800px;color: red">
+             {% for message in messages %}
+                 {{ message }}
+             {% endfor %}
+    </div>
+{% endif %}
+<table cellpadding="9" cellspacing="0" style="margin-left: 500px;">
+    <form action="/archive/stuCheckIn/" method="post">
+        {% csrf_token %}
+        <tr>
+            <td colspan=2 align="center">
+                学生编号&emsp;<input type="text" name="sid">
+                <input type="submit" value="提交">
+                <input type="reset" value="重置">
+            </td>
+        </tr>
+        <tr>
+            <td> 学生姓名&emsp;<input type="text" name="sname"></td>
+            <td> 班级名称&emsp;<input type="text" name="cname"></td>
+        </tr>
+        <tr>
+            <td>专业名称&emsp;<input type="text" name="mname"></td>
+            <td>入学日期&emsp;<input type="date" name="indate"></td>
+        </tr>
+        <tr>
+            <td>经办人&emsp;&emsp;<input type="text" name="agent"></td>
+            <td> 入学分数&emsp;<input type="text" name="inscore"></td>
+        </tr>
+    </form>
+</table>
 {% endblock %}
