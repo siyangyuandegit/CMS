@@ -65,7 +65,7 @@ class Choosecur(models.Model):
 
 class Clazz(models.Model):
     cid = models.AutoField(primary_key=True)
-    cname = models.IntegerField()
+    cname = models.CharField(max_length=24)
     gid = models.ForeignKey('Grade', models.DO_NOTHING, db_column='gid', blank=True, null=True)
     mid = models.ForeignKey('Major', models.DO_NOTHING, db_column='mid', blank=True, null=True)
 
