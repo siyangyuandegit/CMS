@@ -28,7 +28,7 @@ class Bookborrow(models.Model):
     sid = models.ForeignKey('Stuinfo', models.DO_NOTHING, db_column='sid')
     borrowdate = models.DateField()
     returndate = models.DateField()
-    operator = models.IntegerField()
+    operator = models.CharField(max_length=12)
 
     class Meta:
         managed = False

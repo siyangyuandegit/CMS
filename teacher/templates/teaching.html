@@ -2,31 +2,6 @@
 {% block right %}
     <!DOCTYPE html>
     <html>
-{#    <head>#}
-{#        <meta charset="utf-8">#}
-{#        <meta name="author" content="http://www.softwhy.com/"/>#}
-{#        <title> js实现的文本框内容发生改变立马触发事件简单介绍</title>#}
-{#        <script type="text/javascript">#}
-{#            window.onload = function () {#}
-{#                var otxt = document.getElementById("tid");#}
-{#                var oshow = document.getElementById("show");#}
-{#                var count = 0;#}
-{#                if (document.all) {#}
-{#                    otxt.onpropertychange = function () {#}
-{#                        count = count + 1;#}
-{#                        oshow.innerHTML = count;#}
-{#                    }#}
-{#                }#}
-{#                else {#}
-{#                    otxt.oninput = function () {#}
-{#                        count = count + 1;#}
-{#                        oshow.innerHTML = count;#}
-{#                    }#}
-{#                }#}
-{#            }#}
-{#        </script>#}
-{#    </head>#}
-
     <body>
     <form action="/teacher/teaching/" method="post">
         {% csrf_token %}
@@ -38,11 +13,12 @@
         <div style="text-align: center" id="show">
             教师编号: <input type="text" name="tid" >&emsp;
             任课科目:
-            <select name="" id="">
-                <option value="">11</option>
+            <select name="course" id="">
+                <option value="">---请选择---</option>
+                {% for t in t %}
+                    <option value="{{ t.curid.curid }}">{{ t.curid.curname }}</option>
+                {% endfor %}
             </select> &emsp;
-            任课日期:<input type="text" value="11">
-
         </div>
         <br>
         <table border="1px" width="900" align="center" style="text-align: center;font-size: 18px">
@@ -52,23 +28,23 @@
                 <td>年龄</td>
                 <td>学历</td>
                 <td>授课专业</td>
-                <td>婚否</td>
+                <td>教授课程</td>
             </tr>
 
-            {% for teach in tinfo %}
+            {% for tc in tc %}
                 <tr>
-                    <td>{{ teach.tname }}</td>
-                    <td>{{ teach.gender }}</td>
-                    <td>{{ teach.age }}</td>
-                    <td>{{ teach.edu }}</td>
-                    <td>{{ teach.mid.mname }}</td>
-                    <td>{{ teach.married }}</td>
+                    <td>{{ tc.tid.tname }}</td>
+                    <td>{{ tc.tid.gender }}</td>
+                    <td>{{ tc.tid.age }}</td>
+                    <td>{{ tc.tid.edu }}</td>
+                    <td>{{ tc.tid.mid.mname }}</td>
+                    <td>{{ tc.curid.curname }}</td>
                 </tr>
             {% endfor %}
         </table>
         <br>
         <div style="text-align: center">
-            <input type="submit" value="提交"> &emsp;&emsp;
+            <input type="submit" value="查询"> &emsp;&emsp;
             <input type="reset" value="重置">
         </div>
     </form>

@@ -5,6 +5,7 @@
              {% csrf_token %}
             <p>
                 课程：<select name="sel" id="">
+                <option value="">请选择课程</option>
                 {% for curname in cur_list %}
 
                 <option value="{{ curname }}">{{ curname }}</option>
@@ -22,14 +23,16 @@
                 <tr>
                     <td>学生姓名</td>
                     <td>学生班级</td>
-{#                    <td>考试类别</td>#}
-{#                    <td>考试日期</td>#}
+                    <td>考试类别</td>
+                    <td>考试日期</td>
                     <td>学生成绩</td>
                 </tr>
                 {% for c in cc %}
                     <tr>
                         <td>{{ c.sid.sid.sname }}</td>
                         <td>{{ c.sid.sid.cname.cname }}</td>
+                        <td>{{ c.curid.examtype }}</td>
+                        <td>{{ c.curid.examdate|date:'Y-m-d' }}</td>
                         <td>{{ c.score }}</td>
                     </tr>
                 {% endfor %}

@@ -17,6 +17,10 @@
             <td><input type="date" name="examdate"></td>
         </tr>
         <tr>
+            <td>考试类型</td>
+            <td><input type="text" name="examtype"></td>
+        </tr>
+        <tr>
             <td>操作</td>
             <td >
                 <input type="reset" value="重置">
@@ -34,6 +38,7 @@
             <td>学科代码</td>
             <td>学科名称</td>
             <td>考试时间</td>
+            <td>考试类型</td>
             <td>用户操作</td>
          </tr>
         {% for a  in all %}
@@ -43,6 +48,7 @@
             <td>{{ a.curid }}</td>
             <td>{{ a.curname }}</td>
             <td>{{ a.examdate|date:'Y-m-d' }}</td>
+            <td>{{ a.examtype }}</td>
             <td>
                <a href="/codeManage/subjectCode/update/{{ a.curid }}"><input type="button" value="修改"></a>
                 <a href="/codeManage/subjectCode/delete/{{ a.curid }}"><input type="button" value="删除"></a>

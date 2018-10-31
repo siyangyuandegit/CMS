@@ -109,6 +109,7 @@ def courseScore(request):
     cur_list = []
     cur = Course.objects.all()  # 获取所有班级
     for c in cur:
+        # print(c)
         cur_list.append(c.curname)
     if request.method == 'GET':
         return render(request, 'courseScore.html', {'cur_list':cur_list})
@@ -116,14 +117,40 @@ def courseScore(request):
         curname = request.POST.get('sel','')#获取所选班级
         examtype = request.POST.get('examtype','')
         examdate = request.POST.get('examdate','')
+        cc=''
+        if curname:
+            if examtype:
+                if examdate:
+                    cc = Choosecur.objects.filter(curid__curname=curname, curid__examdate=examdate,
+                                                  curid__examtype=examtype)
+                else:
+                    cc = Choosecur.objects.filter(curid__curname=curname,curid__examtype=examtype)
+            else:
+                if examdate:
+                    cc = Choosecur.objects.filter(curid__curname=curname, curid__examdate=examdate)
+                else:
+                    cc = Choosecur.objects.filter(curid__curname=curname)
 
-        if examdate and examtype:
-            cc = Choosecur.objects.filter(curid__curname=curname,curid__examdate=examdate,curid_examtype=examtype)
-        elif examdate and not examtype:
-            cc = Choosecur.objects.filter(curid__curname=curname,curid__examdate=examdate)
-        elif not examdate and examtype:
-            cc = Choosecur.objects.filter(curid__curname=curname,curid__examtype=examtype)
         else:
-            cc = Choosecur.objects.filter(curid__curname=curname)
-        return render(request, 'courseScore.html', {'cur_list':cur_list, 'cc':cc})
+            if examtype:
+                if examdate:
+                    cc = Choosecur.objects.filter( curid__examdate=examdate,curid__examtype=examtype)
+                else:
+                    cc = Choosecur.objects.filter(curid__examtype=examtype)
+            else:
+                if examdate:
+                    cc = Choosecur.objects.filter(curid__examdate=examdate)
+                else:
+                    pass
+
+
+    # if curname and examdate and examtype:
+    #     cc = Choosecur.objects.filter(curid__curname=curname,curid__examdate=examdate,curid_examtype=examtype)
+    # elif examdate and not examtype:
+    #     cc = Choosecur.objects.filter(curid__curname=curname,curid__examdate=examdate)
+    # elif not examdate and examtype:
+    #     cc = Choosecur.objects.filter(curid__curname=curname,curid__examtype=examtype)
+    # else:
+    #     cc = Choosecur.objects.filter(curid__curname=curname)
+    return render(request, 'courseScore.html', {'cur_list':cur_list, 'cc':cc})
 

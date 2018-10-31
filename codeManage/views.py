@@ -50,7 +50,7 @@ def classCode(request):
         all = Clazz.objects.all()
         return render(request, 'classCode.html',{'all':all})
     else:
-
+        print('22222222222222')
         majorname = request.POST.get('mname')
         gradename = request.POST.get('gname')
         classname = request.POST.get('cname')
@@ -60,8 +60,10 @@ def classCode(request):
             major=Major.objects.create(mname=majorname)
         try:
             grade=Grade.objects.get(gname=gradename)
+            print('创建年级')
         except Grade.DoesNotExist:
-            gra = request.POST.get('gname')[:4]
+            gra = request.POST.get('gname')[:-1]
+            print(gra)
             gra=int(gra)
             grade=Grade.objects.create(gname=gradename,gid=gra)
         try:
@@ -81,12 +83,13 @@ def subjectCode(request):
     else:
         id = request.POST.get('curid')
         id = int(id)
-        cname = request.POST.get('curname')
-        curdata = request.POST.get('examdate')
+        cname = request.POST.get('curname','')
+        curdata = request.POST.get('examdate','')
+        curtype = request.POST.get('examtype','')
         try:
             Course.objects.get(curid=id)
         except Course.DoesNotExist:
-            Course.objects.create(curid=id,curname=cname,examdate=curdata)
+            Course.objects.create(curid=id,curname=cname,examdate=curdata,examtype=curtype)
     all = Course.objects.all()
     return render(request, 'subjectCode.html',{'all':all})
 

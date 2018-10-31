@@ -30,9 +30,11 @@
                   <td>{{ teach.tname }}</td>
                   <td>{{ teach.gender }}</td>
                   <td>{{ teach.workdate|date:'Y-m-d' }}</td>
+              <td>
                   {% for cur in login %}
-                  <td>{{ cur.curname}}</td>
+                        {{ cur.curname}}
                   {% endfor %}
+              </td>
                   <td><a href="/teacher/teachQuery/{{ teach.tid}}">删除</a></td>
               </tr>
             {% endfor %}

@@ -6,17 +6,29 @@ from index.models import *
 
 
 def teaching(request):
+    from index.models import Techcourse
+    t = Techcourse.objects.all()
     if request.method == 'GET':
-        return render(request, 'teaching.html')
+
+        return render(request, 'teaching.html',{'t':t})
     else:
         tidd = request.POST.get('tid')
-        # print(tidd)
-        # print(type(tidd))
-        # tid = int(tid)
+        course = request.POST.get('course')
+        tc = ''
+        print(tidd)
+        print(course)
         if tidd:
-            tinfo = Teacherinfo.objects.filter(tid=tidd)
-            return render(request, 'teaching.html', {'tinfo': tinfo})
-        return render(request, 'teaching.html')
+            if course:
+                tc = Techcourse.objects.filter(tid=tidd,curid=course)
+            else:
+                tc = Techcourse.objects.filter(tid=tidd)
+            return render(request, 'teaching.html', {'tc': tc,'t':t})
+        else:
+            if course:
+                tc = Techcourse.objects.filter(curid=course)
+            else:
+                pass
+    return render(request, 'teaching.html',{'t':t,'tc':tc})
 
 
 def teachQuery(request):

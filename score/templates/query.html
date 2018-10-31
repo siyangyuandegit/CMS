@@ -27,6 +27,7 @@
 
         <table border="1px" cellspacing="0px" cellpadding="9px" width="50%" align="center">
             <tr>
+                <td>考试日期</td>
                 <td>考试类别</td>
                 <td>科目名称</td>
                 <td>学生编号</td>
@@ -35,7 +36,8 @@
             </tr>
             {% for stu in stus %}
             <tr>
-                <td>{{ stu.curid.examdate }}</td>
+                <td>{{ stu.curid.examdate|date:'Y-m-d' }}</td>
+                <td>{{ stu.curid.examtype }}</td>
                 <td>{{ stu.curid.curname }}</td>
                 <td>{{ stu.sid_id }}</td>
                 <td>{{ stu.sid.sid.sname }}</td>

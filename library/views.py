@@ -42,7 +42,7 @@ def bookInfo(request):
         except:
             return HttpResponse('不能为空')
 
-def bookMaintain(request)
+def bookMaintain(request):
     if request.method =='GET':
         return render(request,'bookMaintain.html')
     else:
@@ -62,8 +62,9 @@ def bookMaintain(request)
                 return render(request, 'bookMaintain.html', {'all': all})
             except:
                 return HttpResponse('没有这本书')
-import datetime
+
 def bookBorrow(request):
+    import datetime
     if request.method == "GET":
         # borrow = Bookborrow.objects.all()
         return render(request,'bookBorrow.html')
@@ -74,7 +75,11 @@ def bookBorrow(request):
         sm =  request.POST.get('bname')
         jyrq=  request.POST.get('borrowdate')
         czy =  request.POST.get('operator')
-        returndate = datetime.datetime.now()
+        # returndate = datetime.date.datetime.now()
+        returndate = request.POST.get('borrowdate')
+        print(returndate)
+        print(xh)
+        xh = int(xh)
         all = (xh,sh,jyrq,czy)
         try:
             b = Bookinfo.objects.get(bid=sh)
@@ -106,11 +111,12 @@ def bookReturn(request):
 
 
 def borrowQuery(request):
- if request.method == 'GET':
+    if request.method == 'GET':
         return render(request,'borrowQuery.html')
     else:
         select = request.POST.get('select')
         al = request.POST.get('all')
+        cx=''
         # print(select,al)
         if select == 'xh':
             cx = Bookborrow.objects.filter(sid=al)

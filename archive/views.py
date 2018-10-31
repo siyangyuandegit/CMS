@@ -75,11 +75,7 @@ def stuCheckIn(request):
         # inscore = request.POST.get('inscore','007')#入学分数
         print('%s,%s,%s,%s,%s,%s,%s'%(sid,sname,cname,mname,indate,agent,inscore))
         gdate = int(indate[:4])
-        from index.models import Grade,Major
-        grade = Grade.objects.get(gid=gdate)
-        major = Major.objects.get(mname=mname)
-        cls = Clazz.objects.get(cname=str(grade.gid) + str(major.mid) + cname)
-        sid = indate[2:4] + str(major.mid) + str(cls.cid) + sid
+
         from index.models import Admissionsforms,Clazz,Grade,Major
         try:
             Major.objects.get(mname=mname)
@@ -101,6 +97,11 @@ def stuCheckIn(request):
             grade = Grade.objects.get(gid=gdate)
             Clazz.objects.create(**{'cname':str(grade.gid)+str(major.mid)+cname,'gid':Grade.objects.get(gid=gdate),'mid':Major.objects.get(mname=mname)})
         try:
+            from index.models import Grade, Major
+            grade = Grade.objects.get(gid=gdate)
+            major = Major.objects.get(mname=mname)
+            cls = Clazz.objects.get(cname=str(grade.gid) + str(major.mid) + cname)
+            sid = indate[2:4] + str(major.mid) + str(cls.cid) + sid
             Admissionsforms.objects.get(sid=sid)
             return JsonResponse({'key':'2'})
         except:
@@ -142,7 +143,7 @@ def stuInfoMaintain(request):
             for ad in ad:
                 stu.append(Stuinfo.objects.get(sid=ad.sid))
         elif qcondition=='identityNum':
-            stu = Stuinfo.objects.filter(identitynum=condition)
+            stu = Stuinfo.objects.filter(identitynum__contains=condition)
         try:
             iter(stu)
         except:
