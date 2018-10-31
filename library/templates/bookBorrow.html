@@ -1,30 +1,31 @@
 {% extends 'base.html' %}
 {% block right %}
-    <form action="" method="post" style="margin-top: 5%">
+
+    <form action="/library/bookBorrow/" method="post" style="margin-top: 5%">
         {% csrf_token %}
         <table style="text-align: center" align="center">
             <tr>
-                <td style="font-weight: bold">学号：&emsp;<input type="text"></td>
-                <td style="font-weight: bold">&emsp;&emsp;学生姓名：&emsp;<input type="text"></td>
+                <td style="font-weight: bold">学&emsp;&emsp;号：&emsp;<input type="text" name="sid"></td>
+                <td style="font-weight: bold">&emsp;&emsp;学生姓名：&emsp;<input type="text" name="sname"></td>
             </tr>
 
                <tr>
-                <td style="font-weight: bold">书号：&emsp;<input type="text"></td>
-                <td style="font-weight: bold">&emsp;&emsp;书名：&emsp;<input type="text"></td>
+                <td style="font-weight: bold">书&emsp;&emsp;号：&emsp;<input type="text" name="bid"></td>
+                <td style="font-weight: bold">&emsp;&emsp;书&emsp;&emsp;名：&emsp;<input type="text" name="bname"></td>
                 </tr>
             <tr>
-                <td style="font-weight: bold">作者：&emsp;<input type="text"></td>
-                <td style="font-weight: bold">&emsp;&emsp;类别名称：&emsp;<input type="text"></td>
+                <td style="font-weight: bold">借阅日期：&emsp;<input type="date" name="borrowdate"></td>
+                <td style="font-weight: bold">&emsp;&emsp;操作员：&emsp;&emsp;<input type="text" name="operator"></td>
                 </tr>
-            <tr>
-                <td style="font-weight: bold">操作员：&emsp;<input type="text"></td>
-                <td style="font-weight: bold">&emsp;&emsp;单价：&emsp;<input type="text"></td>
-                </tr>
-         
-                <td style="font-weight: bold" colspan="2">图书简介：&emsp;<textarea style="height: 80px;width: 540px" ></textarea> </td>
+
+
+{#                <td style="font-weight: bold" colspan="2" >图书简介：&emsp;<textarea style="height: 80px;width: 540px" name="tsjj"></textarea> </td>#}
             </tr>
+
             <tr>
                 <td colspan="2" style="font-weight: bold">
+                     <br><br>
+
                     <input type="submit" value="保存">
                     <input type="reset" value="重置">
                 </td>
@@ -42,11 +43,13 @@
                 <td>借阅日期</td>
             </tr>
             <tr>
-                <td>22</td>
-                <td>小明</td>
-                <td>12334</td>
-                <td>水浒传</td>
-                <td>2017-08-09</td>
+                {% for b in borrow %}
+                <td>{{ b.sid.sid.sid}}</td>
+                <td>{{ b.sid.sid.sname }}</td>
+                <td>{{ b.bid.bid }}</td>
+                <td>{{ b.bid.bname }}</td>
+                <td>{{ b.borrowdate }}</td>
+                {% endfor %}
             </tr>
         </table>
     </form>
