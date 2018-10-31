@@ -1,8 +1,15 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+
 <head>
+    {% block head %}
+
+{% endblock %}
+
     <title>校园管理系统</title>
+<script src={% static 'jquery/jquery.min.js' %}></script>
+
     <link href={% static 'bootstrap/bootstrap.css' %} media='all' rel='stylesheet' type='text/css'/>
     <link href={% static 'bootstrap/bootstrap-responsive.css' %} media='all' rel='stylesheet' type='text/css'/>
     <link href={% static 'light-theme.css' %} id='color-settings-body-color' media='all' rel='stylesheet'
@@ -89,26 +96,35 @@
                     <span>成绩管理</span>
                 </a>
                 <ul class='nav nav-stacked'>
+
+                    <li class=''>
+                        <a href='/score/teachCur/'>
+                            <span>教师授课系统</span>
+                        </a>
+
+                    <li class=''>
+                        <a href='/score/chooseCur/'>
+                            <span>学生选课系统</span>
+                        </a>
+                    </li>
                     <li class=''>
                         <a href='/score/record/'>
                             <span>成绩录入</span>
                         </a>
                     </li>
+
                     <li class=''>
                         <a href='/score/query/'>
                             <span>成绩查询</span>
                         </a>
                     </li>
+
                     <li class=''>
-                        <a href='/score/classScore/'>
-                            <span>班级成绩统计</span>
+                        <a href='/score/courseScore/'>
+                            <span>课程成绩统计</span>
                         </a>
                     </li>
-                    <li class=''>
-                        <a href='/score/gradeScore/'>
-                            <span>年纪成绩统计</span>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
             <li>
