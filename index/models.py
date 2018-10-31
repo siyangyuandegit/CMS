@@ -65,7 +65,7 @@ class Choosecur(models.Model):
 
 class Clazz(models.Model):
     cid = models.AutoField(primary_key=True)
-    cname = models.CharField(max_length=12)
+    cname = models.CharField(max_length=24)
     gid = models.ForeignKey('Grade', models.DO_NOTHING, db_column='gid', blank=True, null=True)
     mid = models.ForeignKey('Major', models.DO_NOTHING, db_column='mid', blank=True, null=True)
 
@@ -78,10 +78,21 @@ class Course(models.Model):
     curid = models.IntegerField(primary_key=True)
     curname = models.CharField(max_length=12)
     examdate = models.DateField()
+    examtype = models.CharField(max_length=12)
 
     class Meta:
         managed = False
         db_table = 'course'
+
+
+class DjangoMigrations(models.Model):
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_migrations'
 
 
 class Grade(models.Model):

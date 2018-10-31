@@ -43,8 +43,8 @@
             <td> {{ stu.sid.sid}}</td>
             <td> {{ stu.sid.sname }}</td>
             <td> {{ stu.identitynum }}</td>
-            <td> {{ stu.birthdate }}</td>
-            <td> {{ stu.sid.indate }}</td>
+            <td> {{ stu.birthdate|date:'Y-m-d' }}</td>
+            <td> {{ stu.sid.indate|date:'Y-m-d' }}</td>
             <td > {{ stu.sid.inscore }}</td>
             <td >{{ stu.sid.agent }} </td>
      </tr>

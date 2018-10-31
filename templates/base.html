@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% block head %}
+    {% endblock %}
     <title>校园管理系统</title>
+    <script src="https://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
     <link href={% static 'bootstrap/bootstrap.css' %} media='all' rel='stylesheet' type='text/css'/>
     <link href={% static 'bootstrap/bootstrap-responsive.css' %} media='all' rel='stylesheet' type='text/css'/>
     <link href={% static 'light-theme.css' %} id='color-settings-body-color' media='all' rel='stylesheet'

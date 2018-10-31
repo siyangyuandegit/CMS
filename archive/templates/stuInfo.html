@@ -1,7 +1,45 @@
 {% extends 'base.html' %}
+{% block head %}
+    <script type="text/javascript">
+        function checkId() {
+            var id = $('#sid').val()
+            if (id == ''){
+                alert('编号不能空')
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function checkIn() {
+{#            alert(typeof $('#checkIn').serialize());#}
+            $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/archive/stuInfo/" ,//url
+                data: $('#checkIn').serialize(),
+
+                success: function (result) {
+{#                    console.log(result.key);#}
+{#                    console.log('111111');#}
+{#                    console.log(result);//打印服务端返回的数据(调试用)#}
+                    if (result.key == 1) {
+                        alert("添加成功(*^▽^*)");
+                    }
+                   else {
+                        alert("修改成功！")
+                    }
+                    ;
+                },
+                error : function() {
+                    alert("查无此人");
+                }
+            });
+        }
+    </script>
+{% endblock %}
 {% block right %}
     <table cellpadding="9" cellspacing="0">
-        <form action="/archive/stuInfo/" method="post">
+        <form id="checkIn">
         {% csrf_token %}
             <tr>
                 <td>
@@ -15,8 +53,8 @@
                 </td>
             </tr>
             <tr>
-                <td>学生编号&emsp;<input type="text" name="sid" ></td>
-                <td> 学生姓名&emsp;<input type="text" name="sname" ></td>
+                <td>学生编号&emsp;<input type="text" name="sid" onblur="checkId();" id="sid"></td>
+                <td> 学生姓名&emsp;<input type="text" name="sname" id="sname"></td>
             </tr>
             <tr>
                 <td>
@@ -50,8 +88,8 @@
                     </select>
                 </td>
                 <td>
-                    <button type="submit">提交</button>
-                    <button type="reset">重置</button>
+                    <input type="button" value="提交" onclick="checkIn();">
+                    <input type="reset" value="重置">
                 </td>
             </tr>
         </form>
