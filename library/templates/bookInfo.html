@@ -1,4 +1,41 @@
 {% extends 'base.html' %}
 {% block right %}
-    index
+    <form action="" method="post" style="margin-top: 5%">
+        {% csrf_token %}
+        <table style="text-align: center" align="center">
+            <tr>
+                <td style="font-weight: bold">书号：&emsp;<input type="text"></td>
+                <td style="font-weight: bold">&emsp;&emsp;书名：&emsp;<input type="text"></td>
+            </tr>
+
+               <tr>
+                <td style="font-weight: bold">作者：&emsp;<input type="text"></td>
+                <td style="font-weight: bold">&emsp;&emsp;类别名称：&emsp;<input type="text"></td>
+                </tr>
+            <tr>
+                <td style="font-weight: bold">出版社：&emsp;<input type="text"></td>
+                <td style="font-weight: bold">&emsp;&emsp;发行日期：&emsp;<input type="date"></td>
+                </tr>
+            <tr>
+                <td style="font-weight: bold">操作员：&emsp;<input type="text"></td>
+                <td style="font-weight: bold">&emsp;&emsp;价格：&emsp;<input type="text"></td>
+                </tr>
+            <tr>
+                <td style="font-weight: bold">入库数量：&emsp;<input type="text"></td>
+                <td style="font-weight: bold">&emsp;&emsp;入库时间：&emsp;<input type="date"></td>
+                </tr>
+            <tr>
+                <td style="font-weight: bold" colspan="2">图书简介：&emsp;<textarea style="height: 80px;width: 540px" ></textarea> </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="font-weight: bold">
+                    <input type="submit" value="保存">
+                    <input type="reset" value="重置">
+                </td>
+            </tr>
+
+        </table>
+
+
+    </form>
 {% endblock %}
