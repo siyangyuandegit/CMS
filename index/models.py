@@ -53,9 +53,21 @@ class Bookinfo(models.Model):
         db_table = 'bookinfo'
 
 
+
+class Choosecur(models.Model):
+    sid = models.ForeignKey('Stuinfo', models.DO_NOTHING, db_column='sid')
+    curid = models.ForeignKey('Course', models.DO_NOTHING, db_column='curid')
+    score = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'choosecur'
+
+
 class Clazz(models.Model):
     cid = models.AutoField(primary_key=True)
-    cname = models.CharField(max_length=12)
+    cname = models.CharField(max_length=24)
+
     gid = models.ForeignKey('Grade', models.DO_NOTHING, db_column='gid', blank=True, null=True)
     mid = models.ForeignKey('Major', models.DO_NOTHING, db_column='mid', blank=True, null=True)
 
@@ -68,6 +80,7 @@ class Course(models.Model):
     curid = models.IntegerField(primary_key=True)
     curname = models.CharField(max_length=12)
     examdate = models.DateField()
+    examtype = models.CharField(max_length=12)
 
     class Meta:
         managed = False

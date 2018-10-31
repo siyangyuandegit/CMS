@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cms',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': '12345',
         'PORT': '3306',
         'HOST': '127.0.0.1',
     }
@@ -135,7 +135,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static/stylesheets'),
-    os.path.join(BASE_DIR,'static/fonts'),
     os.path.join(BASE_DIR,'static/images'),
     os.path.join(BASE_DIR,'static/javascripts'),
 ]
