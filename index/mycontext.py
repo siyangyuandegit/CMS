@@ -1,5 +1,8 @@
 #coding=utf-8
+from django.shortcuts import render
+from index.models import *
 def mydata(request):
+
     from .models import Admissionsforms,Bookborrow,Bookinfo,Course,Clazz,Choosecur,Grade,Major,Stuinfo,Teacherinfo,Techcourse
     Admissionsforms = Admissionsforms.objects.all() #1学生入学登记
     Bookborrow = Bookborrow.objects.all()#2图书借阅

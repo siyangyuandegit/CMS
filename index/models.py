@@ -53,6 +53,7 @@ class Bookinfo(models.Model):
         db_table = 'bookinfo'
 
 
+
 class Choosecur(models.Model):
     sid = models.ForeignKey('Stuinfo', models.DO_NOTHING, db_column='sid')
     curid = models.ForeignKey('Course', models.DO_NOTHING, db_column='curid')
@@ -66,6 +67,7 @@ class Choosecur(models.Model):
 class Clazz(models.Model):
     cid = models.AutoField(primary_key=True)
     cname = models.CharField(max_length=24)
+
     gid = models.ForeignKey('Grade', models.DO_NOTHING, db_column='gid', blank=True, null=True)
     mid = models.ForeignKey('Major', models.DO_NOTHING, db_column='mid', blank=True, null=True)
 
