@@ -14,14 +14,14 @@
                     <input type="text" name="all">
                 </td>
                 <td><input type="submit" value="提交" style="margin-top:-10px"></td>
-{#                <td><input type="button" value="显示全部" style="margin-top:-10px"></td>#}
+                <td><input type="button" value="显示全部" style="margin-top:-10px"></td>
             </tr>
         </table>
     </form>
     <form>
         {% csrf_token %}
 
-
+        {% for c in cx %}
         <table border="2" cellspacing="0" cellpadding="9" align="center" style="text-align: center;width: 50%">
             <tr>
                 <td>学号</td>
@@ -31,7 +31,6 @@
                 <td>借阅日期</td>
                 <td>操作员</td>
             </tr>
-            {% for c in cx %}
             <tr>
                 <td>{{ c.sid.sid.sid}}</td>
                 <td>{{ c.bid.bid }}</td>
@@ -40,7 +39,7 @@
                 <td>{{ c.borrowdate|date:'Y年m月d日'}}</td>
                 <td>{{ c.operator }}</td>
             </tr>
-            {% endfor %}
         </table>
+        {% endfor %}
     </form>
 {% endblock %}
